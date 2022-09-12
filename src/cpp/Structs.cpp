@@ -22,3 +22,14 @@ Brick createBrick(int x,int y,int width,int height)
 	return brick;
 
 }
+
+
+Button createButton(float x, float y, int width, int height, std::string buttonTitle, Color color)
+{
+	Button button;
+	button.isOver = false;
+	button.rec ={ x,y, width, height };
+	button.buttonTittle = buttonTitle;
+	button.color = color;
+	return button;
+}

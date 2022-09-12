@@ -7,11 +7,11 @@ void playerInput(Player& player)
 	if (slGetKey('A')&& player.pad.leftEdge > 0)
 	{
 		
-		player.pad.x -= 200 * test ;
+		player.pad.x -= player.speed * test ;
 	}
 	if(slGetKey('D')&& player.pad.rightEdge < 900)
 	{
-		player.pad.x += 200* test;
+		player.pad.x += player.speed * test;
 	}
 
 }

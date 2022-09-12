@@ -152,6 +152,7 @@
     <ClInclude Include="..\src\header\Functions.h" />
     <ClInclude Include="..\src\header\GameLogic.h" />
     <ClInclude Include="..\src\header\InputSystem.h" />
+    <ClInclude Include="..\src\header\MenuScreen.h" />
     <ClInclude Include="..\src\header\Structs.h" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +160,7 @@
     <ClCompile Include="..\src\cpp\GameLogic.cpp" />
     <ClCompile Include="..\src\cpp\InputSystem.cpp" />
     <ClCompile Include="..\src\cpp\main.cpp" />
+    <ClCompile Include="..\src\cpp\MenuScreen.cpp" />
     <ClCompile Include="..\src\cpp\Structs.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

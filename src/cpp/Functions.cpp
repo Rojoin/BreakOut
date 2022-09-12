@@ -65,7 +65,7 @@ bool checkRecMouseCollision(Rectangle rec, Vector2 mouse)
 	int upEdge = rec.y - rec.height / 2;
 	int downEdge = rec.y + rec.height / 2;
 
-	if (mouse.x >= leftEdge && mouse.x <= rightEdge && mouse.y >= upEdge && mouse.y <= downEdge)
+	if (mouse.x >= leftEdge && mouse.x <= rightEdge && mouse.y <= upEdge && mouse.y >= downEdge)
 	{
 		return true;
 	}

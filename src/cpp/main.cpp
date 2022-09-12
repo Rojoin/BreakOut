@@ -8,8 +8,8 @@
 int main(int args, char* argv[])
 {
 	
-	slWindow(900, 900, "I´m in Misery", false);
-
+	slWindow(900, 900, "Pong", false);
+	
 	bool first = true;
 	while (!slShouldClose() && !slGetKey(SL_KEY_ESCAPE))
 	{

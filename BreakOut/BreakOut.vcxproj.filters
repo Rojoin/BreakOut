@@ -21,6 +21,9 @@
     <ClInclude Include="..\src\header\Structs.h">
       <Filter>Header</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\header\MenuScreen.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\cpp\Functions.cpp">
@@ -36,6 +39,9 @@
       <Filter>Cpp</Filter>
     </ClCompile>
     <ClCompile Include="..\src\cpp\Structs.cpp">
+      <Filter>Cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cpp\MenuScreen.cpp">
       <Filter>Cpp</Filter>
     </ClCompile>
   </ItemGroup>
