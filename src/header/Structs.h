@@ -57,3 +57,5 @@ const Color YELLOW = { 1, 1,0 , 1 };
 const Color VIOLET = { 0.5, 0,1 , 1 };
 const Color WHITE = { 1, 1,1 , 1 };
 const Color BLACK = { 0, 0,0 , 1 };
+const float minSpeed = 200;
+const float maxSpeed = 500;

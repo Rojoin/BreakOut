@@ -10,19 +10,16 @@ int main(int args, char* argv[])
 	
 	slWindow(900, 900, "I´m in Misery", false);
 
-	extern Ball ball;
-	extern Player player;
-	Vector2 pos = {100,200};
-	Vector2 speed = {200,250};
-	ball.radius = 5;
-	ball.position = pos;
-	ball.speed = speed;
-	initBrick();
-	player = { 450,50,100,25 };
+	bool first = true;
 	while (!slShouldClose() && !slGetKey(SL_KEY_ESCAPE))
 	{
-
+		if (first)
+		{
+			initBrick();
+			first = false;
+		}
 		gameLogic();
+		drawGame();
 
 	}
 	slClose();
