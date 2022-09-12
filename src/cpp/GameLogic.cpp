@@ -49,21 +49,21 @@ void brickBallLogic(Brick& brick)
 		ball.speed.x = abs(ball.speed.x);
 		if (ball.position.x <= brick.pad.leftEdge)
 		{
-			ball.speed.x *= -1.0f;
+			ball.speed.x *= -1.5f;
 		}
 		else if (ball.position.x > brick.pad.leftEdge && ball.position.x < brick.pad.x)
 		{
-			ball.speed.x *= -1.0f;
+			ball.speed.x *= -1.5f;
 		}
 		else if (ball.position.x > brick.pad.x && ball.position.x < brick.pad.rightEdge)
 		{
-			ball.speed.x *= 1.0f;
+			ball.speed.x *= 1.5f;
 		}
 		else if (ball.position.x >= brick.pad.rightEdge)
 		{
-			ball.speed.x *= 1.0f;
+			ball.speed.x *= 1.5f;
 		}
-		ball.speed.x += 1.0f;
+		ball.speed.x += 1.50f;
 		ball.speed.y *= -1.0f;
 		brick.enabled = false;
 	}
