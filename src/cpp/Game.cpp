@@ -24,7 +24,7 @@ void initGame()
 	slSetTextAlign(SL_ALIGN_CENTER);
 	bool activeWindow = true;
 	slSoundLoop(soundMenu);
-	while (activeWindow && !slGetKey(SL_KEY_ESCAPE)&& !slShouldClose())
+	while (activeWindow && !slShouldClose())
 	{
 		switch (gameStates)
 		{

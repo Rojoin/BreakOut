@@ -27,7 +27,11 @@ void drawHowTo()
 	setColor(WHITE);
 	slText(screenSize / 2, 500, "In BREAKOUT you are a prisioner that is trying to escape from his cell");
 	slText(screenSize / 2, 400, "Use the A/D or the left and right arrow keys to move your character with your pad");
-	slText(screenSize / 2, 300, "Break the bricks hitting the ball and be free!!");
+	slSetFontSize(15);
+	slText(screenSize / 2, 300, "Press ESCAPE to go back to the Menu");
+	slSetFontSize(12);
+	slText(screenSize / 2, 250, "Break the bricks hitting the ball and be free!!");
+
 
 	if (backButton.isOver)
 	{

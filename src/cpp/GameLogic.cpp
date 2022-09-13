@@ -6,6 +6,15 @@
 
 extern Ball ball;
 extern int soundHit;
+extern int soundDead;
+extern int soundWin;
+extern int soundLose;
+
+
+
+
+
+
 Player player;
 extern int screenSize;
 int windowGameSize = screenSize - 100;
@@ -148,6 +157,7 @@ void floorCollision()
 	if (ball.position.y < ball.radius)
 	{
 		player.lives--;
+		slSoundPlay(soundDead);
 		initBall();
 	}
 }
@@ -177,6 +187,9 @@ void initPlay()
 }
 void gameLogic(GameStates& gameStates)
 {
+	if (!slGetKey(SL_KEY_ESCAPE))
+	{
+		
 	updatePadParts(player.pad);
 	playerInput(player);
 		updateScoreBoard();
@@ -214,7 +227,12 @@ void gameLogic(GameStates& gameStates)
 		{
 			initPlay();
 		}
+	}
 		
+	}
+	else
+	{
+		gameStates = GameStates::MainMenu;
 	}
 	
 
@@ -232,6 +250,7 @@ void drawGame()
 
 	if (player.lives <= 0 && areActiveBricks())
 	{
+		slSoundPlay(soundLose);
 		setColor(RED);
 		slText(450, 450, "YOU LOSE");
 		setColor(WHITE);
@@ -262,6 +281,7 @@ void drawGame()
 	}
 	else if (!areActiveBricks() && player.lives >0)
 	{
+		slSoundPlay(soundWin);
 		setColor(GREEN);
 		slText(450, 450, "YOU WIN");
 		setColor(WHITE);
