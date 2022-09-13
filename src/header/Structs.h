@@ -64,7 +64,7 @@ enum class GameStates
 	Exit
 };
 
-
+extern int screenSize;
 const Color RED = { 1, 0, 0, 1 };
 const Color BLUE = { 0, 0, 1, 1 };
 const Color GREEN = { 0, 1, 0, 1 };
@@ -78,3 +78,4 @@ const Color BLACK = { 0, 0,0 , 1 };
 const float minBallSpeed = 200;
 const float maxBallSpeed = 500;
 const float playerSpeed = 400;
+

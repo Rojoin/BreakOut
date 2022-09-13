@@ -100,6 +100,12 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Lib\Sigil\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sigil.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>XCOPY "$(SolutionDir)Lib" "$(SolutionDir)bin\$(Platform)\$(Configuration)" /e /h /y /s
+MKDIR "$(SolutionDir)bin$(Platfrom)$(Confifuration)\Assets"
+XCOPY "$(SolutionDir)Assets" "$(SolutionDir)bin\$(Platform)\$(Configuration)\Assets" /e /h /y /s
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -119,6 +125,12 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Lib\Sigil\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sigil.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>XCOPY "$(SolutionDir)Lib" "$(SolutionDir)bin\$(Platform)\$(Configuration)" /e /h /y /s
+MKDIR "$(SolutionDir)bin\$(Platform)\$(Configuration)\Assets"
+XCOPY "$(SolutionDir)Assets" "$(SolutionDir)bin\$(Platform)\$(Configuration)\Assets" /e /h /y /s
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -152,6 +164,7 @@
     <ClInclude Include="..\src\header\Functions.h" />
     <ClInclude Include="..\src\header\Game.h" />
     <ClInclude Include="..\src\header\GameLogic.h" />
+    <ClInclude Include="..\src\header\HowTo.h" />
     <ClInclude Include="..\src\header\InputSystem.h" />
     <ClInclude Include="..\src\header\MenuScreen.h" />
     <ClInclude Include="..\src\header\Structs.h" />
@@ -160,6 +173,7 @@
     <ClCompile Include="..\src\cpp\Functions.cpp" />
     <ClCompile Include="..\src\cpp\Game.cpp" />
     <ClCompile Include="..\src\cpp\GameLogic.cpp" />
+    <ClCompile Include="..\src\cpp\HowTo.cpp" />
     <ClCompile Include="..\src\cpp\InputSystem.cpp" />
     <ClCompile Include="..\src\cpp\main.cpp" />
     <ClCompile Include="..\src\cpp\MenuScreen.cpp" />

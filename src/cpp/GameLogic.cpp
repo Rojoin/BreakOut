@@ -5,6 +5,7 @@
 #include <cmath>
 
 extern Ball ball;
+extern int soundHit;
 Player player;
 extern int screenSize;
 int windowGameSize = screenSize - 100;
@@ -37,6 +38,7 @@ void paddleBallLogic(Player player)
 			ball.speed.x *= 1.0f;
 		}
 		ball.speed.y *= -1.0f;
+		slSoundPlay(soundHit);
 	}
 }
 void brickBallLogic(Brick& brick)
@@ -76,7 +78,7 @@ void brickBallLogic(Brick& brick)
 		}
 
 		player.score += brick.score;
-
+		slSoundPlay(soundHit);
 		brick.enabled = false;
 	}
 }

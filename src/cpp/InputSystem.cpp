@@ -5,12 +5,12 @@ extern int screenSize;
 void playerInput(Player& player)
 {
 	double delta = slGetDeltaTime();
-	if (slGetKey('A')&& player.pad.leftEdge > 0)
+	if ((slGetKey('A')&& player.pad.leftEdge > 0)|| (slGetKey(SL_KEY_LEFT) && player.pad.leftEdge > 0))
 	{
 		
 		player.pad.x -= player.speed * delta;
 	}
-	if(slGetKey('D')&& player.pad.rightEdge < screenSize)
+	if((slGetKey('D')&& player.pad.rightEdge < screenSize)|| (slGetKey(SL_KEY_RIGHT) && player.pad.rightEdge < screenSize))
 	{
 		player.pad.x += player.speed * delta;
 	}

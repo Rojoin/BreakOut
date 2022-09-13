@@ -2,10 +2,10 @@
 #include "../header/Functions.h"
 #include "../header/GameLogic.h"
 
-
-Button playButton = createButton(450,700,110,50,"PLAY",GREEN);
-Button howToButton = createButton(450, 500, 110, 50, "HOWTO", GREEN);
-Button exitButton = createButton(450, 300, 110, 50, "EXIT", RED);
+extern int screenSize;
+Button playButton = createButton(450,400,110,50,"PLAY",GREEN);
+Button howToButton = createButton(450, 300, 110, 50, "HOWTO", GREEN);
+Button exitButton = createButton(450, 200, 110, 50, "EXIT", RED);
 
 
 void menuState(GameStates& gameStates)
@@ -52,7 +52,10 @@ void menuState(GameStates& gameStates)
 
 void drawMenu()
 {
-
+	setColor(RED);
+	slSetFontSize(100);
+	slText(screenSize / 2, screenSize - 200,"BREAKOUT");
+	slSetFontSize(20);
 	if (playButton.isOver)
 	{
 		drawRectangle(playButton.rec, playButton.color);
@@ -83,4 +86,10 @@ void drawMenu()
 	}
 	slSetForeColor(0, 0, 0, 1);
 	slText(exitButton.rec.x, exitButton.rec.y, exitButton.buttonTittle.c_str());
+	setColor(RED);
+	slSetFontSize(20);
+	slText(450, 25, "Game made by Ignacio 'Rojoin' Arrastua");
+	slSetFontSize(18);
+	setColor(PINK);
+	slText(450, 50, "Music made by Ezequiel 'CanineLotus' Gonzalez");
 }
