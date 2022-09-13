@@ -7,4 +7,4 @@ void drawBall(Ball ball,Color color);
 void drawRectangle(Rectangle rectangle, Color color);
 bool checkRecBallCollision(Rectangle rectangle, Ball ball);
 bool checkRecMouseCollision(Rectangle rec, Vector2 mouse);
-
+void setColor(Color color);

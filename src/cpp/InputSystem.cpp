@@ -1,17 +1,34 @@
 #include "../header/InputSystem.h"
 #include "sl.h"
 
+extern int screenSize;
 void playerInput(Player& player)
 {
-	double test = slGetDeltaTime();
+	double delta = slGetDeltaTime();
 	if (slGetKey('A')&& player.pad.leftEdge > 0)
 	{
 		
-		player.pad.x -= player.speed * test ;
+		player.pad.x -= player.speed * delta;
 	}
-	if(slGetKey('D')&& player.pad.rightEdge < 900)
+	if(slGetKey('D')&& player.pad.rightEdge < screenSize)
 	{
-		player.pad.x += player.speed * test;
+		player.pad.x += player.speed * delta;
 	}
 
+}
+bool goBackToMenu()
+{
+	if (slGetKey(' '))
+	{
+		return true;
+	}
+	return false;
+}
+bool resetGame()
+{
+	if (slGetKey('R'))
+	{
+		return true;
+	}
+	return false;
 }

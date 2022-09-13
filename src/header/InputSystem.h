@@ -3,3 +3,5 @@
 
 
 void playerInput(Player& player);
+bool goBackToMenu();
+bool resetGame();

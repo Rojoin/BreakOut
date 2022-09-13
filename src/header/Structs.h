@@ -51,7 +51,6 @@ struct Player
 };
 struct Ball
 {
-	bool isMoving;
 	Vector2 position;
 	int radius;
 	Vector2 speed;
@@ -60,8 +59,8 @@ struct Ball
 enum class GameStates
 {
 	MainMenu,
-	VsCpu,
-	Rules,
+	Game,
+	HowTo,
 	Exit
 };
 
@@ -76,5 +75,6 @@ const Color YELLOW = { 1, 1,0 , 1 };
 const Color VIOLET = { 0.5, 0,1 , 1 };
 const Color WHITE = { 1, 1,1 , 1 };
 const Color BLACK = { 0, 0,0 , 1 };
-const float minSpeed = 200;
-const float maxSpeed = 500;
+const float minBallSpeed = 200;
+const float maxBallSpeed = 500;
+const float playerSpeed = 400;

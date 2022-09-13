@@ -10,12 +10,12 @@ void updatePadParts(Rectangle& rec)
 
 Brick createBrick(int x,int y,int width,int height)
 {
-	int yLine = 35 - y;
+	int yLine = 32 - y;
 	Brick brick;
 	brick.pad.width = width;
 	brick.pad.height = height;
 	brick.enabled = true;
-	brick.score = 1;
+	brick.score = 100;
 	brick.pad.x = (x *  width)+ width/2;
 	brick.pad.y = yLine * height;
 	

@@ -6,9 +6,11 @@
 
 extern Ball ball;
 Player player;
-
+extern int screenSize;
+int windowGameSize = screenSize - 100;
 Brick brick[36];
-
+std::string playerScore;
+std::string playerLifes;
 
 void paddleBallLogic(Player player)
 {
@@ -73,7 +75,7 @@ void brickBallLogic(Brick& brick)
 			ball.speed.x *= 1.1f;
 		}
 
-
+		player.score += brick.score;
 
 		brick.enabled = false;
 	}
@@ -81,32 +83,23 @@ void brickBallLogic(Brick& brick)
 void ballLogic()
 {
 
-	if (ball.speed.x > maxSpeed)
+	if (ball.speed.x > maxBallSpeed)
 	{
-		ball.speed.x = maxSpeed;
+		ball.speed.x = maxBallSpeed;
 	}
-	if (ball.speed.y > maxSpeed)
+	if (ball.speed.y > maxBallSpeed)
 	{
-		ball.speed.y = maxSpeed;
+		ball.speed.y = maxBallSpeed;
 	}
 	ball.position.x += ball.speed.x * slGetDeltaTime();
 	ball.position.y += ball.speed.y * slGetDeltaTime();
 
 }
-
-void blockCheck()
-{
-}
-
-void blockCollision()
-{
-}
-
 void wallCollision()
 {
-	if (ball.position.y >= 900 - ball.radius)
+	if (ball.position.y >= windowGameSize - ball.radius)
 	{
-		ball.position.y = 900 - ball.radius - 0.02f;
+		ball.position.y = windowGameSize - ball.radius - 0.02f;
 		ball.speed.y *= -1.0f;
 	}
 
@@ -115,21 +108,19 @@ void wallCollision()
 		ball.position.x = ball.radius + 0.02f;
 		ball.speed.x *= -1.0f;
 	}
-	if (ball.position.x > 900 - ball.radius)
+	if (ball.position.x > screenSize - ball.radius)
 	{
-		ball.position.x = 900 - ball.radius - 0.02f;
+		ball.position.x = screenSize - ball.radius - 0.02f;
 		ball.speed.x *= -1.0f;
 	}
 
 
 }
-
-void floorCollision()
+void updateScoreBoard()
 {
-	if (ball.position.y < ball.radius)
-	{
-		player.lives--;
-	}
+	playerScore = "SCORE:" + std::to_string(player.score);
+	playerLifes = "LIVES:" + std::to_string(player.lives);
+
 }
 bool areActiveBricks()
 {
@@ -146,12 +137,24 @@ void initBall()
 {
 	ball.radius = 10;
 	Vector2 pos = { player.pad.x,player.pad.upEdge+ball.radius+0.1f };
-	Vector2 speed = { minSpeed,minSpeed };
-	ball.isMoving = false;
+	Vector2 speed = { minBallSpeed,minBallSpeed };
 	ball.position = pos;
 	ball.speed = speed;
 }
-void initBrick()
+void floorCollision()
+{
+	if (ball.position.y < ball.radius)
+	{
+		player.lives--;
+		initBall();
+	}
+}
+void initPlayer()
+{
+	player = { 400,0,3,{(float)screenSize/2,50,100,25}};
+	updatePadParts(player.pad);
+}
+void initPlay()
 {
 	int number = 0;
 	while (number < 35)
@@ -167,14 +170,14 @@ void initBrick()
 		}
 	}
 
-
+	initPlayer();
 	initBall();
-	player = { 400,0,3,{450,50,100,25} };
 }
-void gameLogic()
+void gameLogic(GameStates& gameStates)
 {
 	updatePadParts(player.pad);
 	playerInput(player);
+		updateScoreBoard();
 	if (areActiveBricks() && player.lives >0)
 	{
 #if _DEBUG
@@ -190,6 +193,7 @@ void gameLogic()
 #endif
 		ballLogic();
 		wallCollision();
+		floorCollision();
 		paddleBallLogic(player);
 		for (int i = 0; i < 36; ++i)
 		{
@@ -197,6 +201,20 @@ void gameLogic()
 
 		}
 	}
+	else if (!areActiveBricks() || player.lives <= 0)
+	{
+		
+		if (goBackToMenu())
+		{
+			gameStates = GameStates::MainMenu;
+		}
+		if(resetGame())
+		{
+			initPlay();
+		}
+		
+	}
+	
 
 
 
@@ -205,7 +223,20 @@ void gameLogic()
 
 void drawGame()
 {
-	if (areActiveBricks())
+	drawRectangle({ 450,900,900,200 }, WHITE);
+	setColor(BLUE);
+	slText(100, 850, playerScore.c_str());
+	slText(800, 850, playerLifes.c_str());
+
+	if (player.lives <= 0 && areActiveBricks())
+	{
+		setColor(RED);
+		slText(450, 450, "YOU LOSE");
+		setColor(WHITE);
+		slText(450, 300, "Press space to go back to Menu");
+		slText(450, 200, "Press R to restart the game");
+	}
+	else if (areActiveBricks())
 	{
 		drawBall(ball, RED);
 		drawRectangle(player.pad, WHITE);
@@ -227,5 +258,17 @@ void drawGame()
 			}
 		}
 	}
-	slRender();
+	else if (!areActiveBricks() && player.lives >0)
+	{
+		setColor(GREEN);
+		slText(450, 450, "YOU WIN");
+		setColor(WHITE);
+		slText(450, 300, "Press space to go back to Menu");
+		slText(450, 200, "Press R to restart the game");
+
+	}
+	
+
+	
+	
 }

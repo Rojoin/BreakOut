@@ -5,10 +5,9 @@
 void paddleBallLogic(Player player);
 void brickBallLogic(Brick& brick);
 void ballLogic();
-void blockCheck();
-void initBrick();
-void blockCollision();
+void initGame();
+void initPlay();
 void wallCollision();
 void floorCollision();
-void gameLogic();
+void gameLogic(GameStates& gameStates);
 void drawGame();

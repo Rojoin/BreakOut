@@ -61,9 +61,9 @@ bool checkRecBallCollision(Rectangle rectangle, Ball ball)
 bool checkRecMouseCollision(Rectangle rec, Vector2 mouse)
 {
 	int rightEdge = rec.x + rec.width / 2;
-	int leftEdge = rec.x - rec.width / 2;
-	int upEdge = rec.y - rec.height / 2;
-	int downEdge = rec.y + rec.height / 2;
+	int leftEdge  = rec.x - rec.width / 2;
+	int upEdge    = rec.y + rec.height/ 2;
+	int downEdge  = rec.y - rec.height/ 2;
 
 	if (mouse.x >= leftEdge && mouse.x <= rightEdge && mouse.y <= upEdge && mouse.y >= downEdge)
 	{
@@ -73,6 +73,11 @@ bool checkRecMouseCollision(Rectangle rec, Vector2 mouse)
 	{
 		return false;
 	}
+}
+
+void setColor(Color color)
+{
+	slSetForeColor(color.r, color.g, color.b, color.a);
 }
 
 
